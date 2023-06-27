@@ -20,8 +20,6 @@ return new class extends Migration
             $table->string('logo');
             $table->string('gambar');
             $table->string('deskripsi');
-            $table->string('latitude');
-            $table->string('longitude');
             $table->foreignId('user_id')->unique()->constrained('users');
             $table->timestamps();
         });

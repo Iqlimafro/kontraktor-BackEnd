@@ -59,9 +59,7 @@ class KontraktorController extends Controller
                 'alamat' => 'required',
                 'logo' => 'required',
                 'gambar' => 'required',
-                'deskripsi' => 'required',
-                'latitude' => 'required',
-                'longitude' => 'required',
+                'deskripsi' => 'required'
             ]);
 
             $createKontraktor = $request->all();
