@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Kontraktor;
 use Illuminate\Http\Request;
 use App\Helpers\ApiFormatter;
+use App\Models\Form;
 use Illuminate\Support\Facades\Auth;
 
 class FormController extends Controller
@@ -13,7 +14,18 @@ class FormController extends Controller
 
     public function getData()
     {
+        $data = Form::with('kontraktor');
+        return $data;
+    }
 
+    public function index()
+    {
+        $data = Form::all();
+        if($data){
+            return ApiFormatter::createApi(200, 'Success', $data);
+        }else{
+            return ApiFormatter::createApi(400, 'failed');
+        }
     }
 
     public function store(Request $request)
@@ -31,10 +43,10 @@ class FormController extends Controller
             $createForm = $request->all();
             // dd($createKontraktor);
 
-            $kontraktor = Kontraktor::create($createForm);
+            $form = Form::create($createForm);
 
-            if($kontraktor){
-                return ApiFormatter::createApi(200, 'Success', $kontraktor);
+            if($form){
+                return ApiFormatter::createApi(200, 'Success', $form);
             }else{
                 return ApiFormatter::createApi(400, 'Failed');
             }

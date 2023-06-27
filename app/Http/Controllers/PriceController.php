@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
-use App\Models\User;
-use App\Models\Kontraktor;
+use App\Models\Price;
+use App\Models\Form;
 use Illuminate\Http\Request;
 use App\Helpers\ApiFormatter;
-use Illuminate\Support\Facades\Auth;
+use Exception;
 
-class KontraktorController extends Controller
+class PriceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,31 +17,12 @@ class KontraktorController extends Controller
      */
     public function index()
     {
-        $data = Kontraktor::all();
+        $data = Price::all();
         if($data){
             return ApiFormatter::createApi(200, 'Success', $data);
         }else{
             return ApiFormatter::createApi(400, 'failed');
         }
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function getData()
-    {
-        // Auth::user()->id;
-        $data = User::with('kontraktor')->where('id', Auth::user()->id)->first();
-        if($data){
-            return ApiFormatter::createApi(200, 'Success', $data);
-        }else{
-            return ApiFormatter::createApi(400, 'failed');
-        }
-        // $data = Kontraktor::with('user')->where('user_id', Auth::user()->id)->first();
-        // return $data;
     }
 
     /**
@@ -53,33 +33,26 @@ class KontraktorController extends Controller
      */
     public function store(Request $request)
     {
-        try {
+        try
+        {
             $request->validate([
-                'nama' => 'required',
-                'alamat' => 'required',
-                'logo' => 'required',
-                'gambar' => 'required',
-                'deskripsi' => 'required',
-                'latitude' => 'required',
-                'longitude' => 'required',
+                'price' => 'required',
+                'form_id' => 'required'
             ]);
 
-            $createKontraktor = $request->all();
-            $createKontraktor['user_id'] = Auth::user()->id;
-            // dd($createKontraktor);
+            $createPrice = $request->all();
 
-            $kontraktor = Kontraktor::create($createKontraktor);
+            $price = Price::create($createPrice);
 
-            if($kontraktor){
-                return ApiFormatter::createApi(200, 'Success', $kontraktor);
+            if($price){
+                return ApiFormatter::createApi(200, 'Success', $price);
             }else{
                 return ApiFormatter::createApi(400, 'Failed');
             }
-        } catch (Exception $error) {
+        }catch (Exception $error) {
             return ApiFormatter::createApi(400, 'Failed',$error);
         }
     }
-
 
     /**
      * Display the specified resource.

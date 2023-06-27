@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
-use App\Models\User;
-use App\Models\Kontraktor;
-use Illuminate\Http\Request;
 use App\Helpers\ApiFormatter;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Reviews;
+use Illuminate\Http\Request;
+use Exception;
 
-class KontraktorController extends Controller
+class ReviewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +16,7 @@ class KontraktorController extends Controller
      */
     public function index()
     {
-        $data = Kontraktor::all();
+        $data = Reviews::all();
         if($data){
             return ApiFormatter::createApi(200, 'Success', $data);
         }else{
@@ -26,24 +24,6 @@ class KontraktorController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function getData()
-    {
-        // Auth::user()->id;
-        $data = User::with('kontraktor')->where('id', Auth::user()->id)->first();
-        if($data){
-            return ApiFormatter::createApi(200, 'Success', $data);
-        }else{
-            return ApiFormatter::createApi(400, 'failed');
-        }
-        // $data = Kontraktor::with('user')->where('user_id', Auth::user()->id)->first();
-        // return $data;
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -53,33 +33,26 @@ class KontraktorController extends Controller
      */
     public function store(Request $request)
     {
-        try {
+        try
+        {
             $request->validate([
-                'nama' => 'required',
-                'alamat' => 'required',
-                'logo' => 'required',
-                'gambar' => 'required',
-                'deskripsi' => 'required',
-                'latitude' => 'required',
-                'longitude' => 'required',
+                'ulasan' => 'required',
+                'form_id'=> 'required'
             ]);
 
-            $createKontraktor = $request->all();
-            $createKontraktor['user_id'] = Auth::user()->id;
-            // dd($createKontraktor);
+            $createReview = $request->all();
+            $review = Reviews::create($createReview);
 
-            $kontraktor = Kontraktor::create($createKontraktor);
-
-            if($kontraktor){
-                return ApiFormatter::createApi(200, 'Success', $kontraktor);
+            if($review){
+                return ApiFormatter::createApi(200, 'Success', $review);
             }else{
                 return ApiFormatter::createApi(400, 'Failed');
             }
-        } catch (Exception $error) {
+
+        }catch (Exception $error) {
             return ApiFormatter::createApi(400, 'Failed',$error);
         }
     }
-
 
     /**
      * Display the specified resource.

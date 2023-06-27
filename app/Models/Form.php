@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Models\Kontraktor;
+use App\Models\Price;
+use App\Models\Reviews;
+use App\Models\Tracking;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,8 +16,23 @@ class Form extends Model
     protected $table = 'form';
     protected $guarded = ['id'];
 
-    public function Kontraktor()
+    public function kontraktor()
     {
         return $this->belongsTo(Kontraktor::class);
+    }
+
+    public function price()
+    {
+        return $this->hasOne(Price::class);
+    }
+
+    public function tracking()
+    {
+        return $this->hasOne(Tracking::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasOne(Reviews::class);
     }
 }

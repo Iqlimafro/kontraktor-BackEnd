@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\KontraktorController;
+use App\Http\Controllers\PriceController;
+use App\Http\Controllers\ReviewsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,8 +26,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-
 });
+
+Route::get('get-mitra',[KontraktorController::class,'index']);
+Route::get('get-price', [PriceController::class, 'index']);
+Route::post('add-price', [PriceController::class, 'store']);
+Route::post('add-form', [FormController::class, 'store']);
+Route::get('get-form', [FormController::class, 'index']);
+Route::get('get-review', [ReviewsController::class,'index']);
+Route::post('add-review', [ReviewsController::class,'store']);
+Route::post('add-image', [ImageController::class,'store']);
+
+
 
 Route::group(['middleware' => ['auth:sanctum', 'mitra']], function() {
     Route::post('/add-kontraktor', [KontraktorController::class,'store']);
