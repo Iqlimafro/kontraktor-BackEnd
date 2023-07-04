@@ -15,9 +15,7 @@ return new class extends Migration
     {
         Schema::create('tracking', function (Blueprint $table) {
             $table->id();
-            $table->string('Order Confirmed');
-            $table->string('Proses Pengerjaan');
-            $table->string('Selesai Dikerjakan');
+            $table->string('status');
             $table->foreignId('form_id')->unique()->constrained('form');
             $table->timestamps();
         });

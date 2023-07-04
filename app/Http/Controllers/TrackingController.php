@@ -36,8 +36,7 @@ class TrackingController extends Controller
         try
         {
             $request->validate([
-                'Order Confirmed' => 'required',
-                'Proses Pengerjaan' => 'required',
+                'status' => 'required',
                 'Selesai' => 'required'
             ]);
 
