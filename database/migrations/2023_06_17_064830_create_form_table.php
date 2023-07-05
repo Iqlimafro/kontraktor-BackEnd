@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('layanan');
             $table->string('image');
-            $table->foreignId('kontraktor_id')->unique()->constrained('kontraktors');
+            $table->foreignId('kontraktor_id')->constrained('kontraktors');
             $table->string('username');
             $table->timestamps();
         });
