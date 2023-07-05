@@ -43,4 +43,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Kontraktor::class);
     }
+    public function form()
+    {
+        return $this->hasMany(Form::class);
+    }
+    public function tracking()
+    {
+        return $this->hasMany(Tracking::class);
+    }
 }

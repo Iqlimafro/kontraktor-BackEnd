@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('layanan');
             $table->string('image');
             $table->foreignId('kontraktor_id')->unique()->constrained('kontraktors');
+            $table->foreignId('username')->constrained('users');
             $table->timestamps();
         });
     }
