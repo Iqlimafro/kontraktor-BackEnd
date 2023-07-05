@@ -28,6 +28,15 @@ class FormController extends Controller
         }
     }
 
+    public function getDataByUsername($username)
+    {
+        $data = Form::with('kontraktor')->where('username', $username)->get();
+        if ($data->isEmpty()) {
+            return ApiFormatter::createApi(404, 'Data not found');
+        }
+        return ApiFormatter::createApi(200, 'Success', $data);
+    }
+
     public function store(Request $request)
     {
         try {
