@@ -22,6 +22,6 @@ class Kontraktor extends Model
 
     public function form()
     {
-        return $this->hasOne(Form::class);
+        return $this->hasMany(Form::class);
     }
 }
