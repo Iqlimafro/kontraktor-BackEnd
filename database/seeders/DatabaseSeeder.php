@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,13 +17,19 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'username' => 'iqlimatul',
-        //     'password' => bcrypt('1234'),
-        //     'address' => 'malang',
-        //     'role' => 'user',
-        //     'remember_token' +>
-        // ]);
+        \App\Models\User::factory()->create([
+            'username' => 'iqlimatul',
+            'password' => bcrypt('1234'),
+            'address' => 'malang',
+            'role' => 'user',
+            'remember_token' => Str::random(40),
+
+            'username' => 'reykazuko',
+            'password' => bcrypt('1234'),
+            'address' => 'pandaan',
+            'role' => 'admin',
+            'remember_token' => Str::random(40),
+        ]);
 
     }
 }
