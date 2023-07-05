@@ -15,9 +15,9 @@ class Kontraktor extends Model
     protected $table ='kontraktors';
     protected $guarded = ['id'];
 
-    public function user()
+    public function kontraktor()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Kontraktor::class,'kontraktor_id');
     }
 
     public function form()

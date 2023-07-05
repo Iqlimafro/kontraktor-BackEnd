@@ -16,7 +16,7 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        $data = Reviews::all();
+        $data = Reviews::with('form')->get();
         if($data){
             return ApiFormatter::createApi(200, 'Success', $data);
         }else{

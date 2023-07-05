@@ -17,7 +17,7 @@ class TrackingController extends Controller
      */
     public function index()
     {
-        $data = Tracking::all();
+        $data = Tracking::with('form')->get();
         if($data){
             return ApiFormatter::createApi(200, 'Success', $data);
         }else{
