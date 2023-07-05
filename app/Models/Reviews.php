@@ -15,7 +15,7 @@ class Reviews extends Model
 
     public function form()
     {
-        $this->belongsTo(Form::class);
+        $this->belongsTo(Form::class,'form_id');
     }
 
 }

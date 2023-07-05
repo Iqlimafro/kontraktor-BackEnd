@@ -6,6 +6,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\KontraktorController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\TrackingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,8 @@ Route::get('get-form', [FormController::class, 'index']);
 Route::get('get-review', [ReviewsController::class,'index']);
 Route::post('add-review', [ReviewsController::class,'store']);
 Route::post('add-image', [ImageController::class,'store']);
+Route::post('add-tracking', [TrackingController::class,'store']);
+Route::post('get-tracking', [TrackingController::class,'index']);
 
 
 

@@ -18,7 +18,7 @@ class Form extends Model
 
     public function kontraktor()
     {
-        return $this->belongsTo(Kontraktor::class);
+        return $this->belongsTo(Kontraktor::class,'kontraktor_id');
     }
 
     public function price()
