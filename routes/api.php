@@ -38,7 +38,7 @@ Route::get('get-review', [ReviewsController::class,'index']);
 Route::post('add-review', [ReviewsController::class,'store']);
 Route::post('add-image', [ImageController::class,'store']);
 Route::post('add-tracking', [TrackingController::class,'store']);
-Route::post('get-tracking', [TrackingController::class,'index']);
+Route::get('get-tracking', [TrackingController::class,'index']);
 
 
 
