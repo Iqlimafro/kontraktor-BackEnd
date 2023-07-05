@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('status');
             $table->foreignId('form_id')->unique()->constrained('form');
-            $table->foreignId('username')->constrained('users');
+            $table->string('username');
             $table->timestamps();
         });
     }

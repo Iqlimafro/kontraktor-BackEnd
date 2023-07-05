@@ -37,7 +37,8 @@ class TrackingController extends Controller
         {
             $request->validate([
                 'status' => 'required',
-                'form_id' => 'required'
+                'form_id' => 'required',
+                'username' => 'required'
             ]);
 
             $createTracking = $request->all();

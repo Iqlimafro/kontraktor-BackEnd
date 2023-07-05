@@ -33,12 +33,12 @@ class FormController extends Controller
         try {
             $request->validate([
                 'kontraktor_id' => 'required',
-                'username' => 'required',
                 'nama' => 'required',
                 'telp' => 'required',
                 'alamat' => 'required',
                 'layanan' => 'required',
-                'image' => 'required'
+                'image' => 'required',
+                'username' => 'required',
             ]);
 
             $createForm = $request->all();
