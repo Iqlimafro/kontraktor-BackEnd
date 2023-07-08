@@ -42,12 +42,13 @@ class FormController extends Controller
         try {
             $request->validate([
                 'kontraktor_id' => 'required',
+                'user_id' => 'required',
                 'nama' => 'required',
                 'telp' => 'required',
                 'alamat' => 'required',
                 'layanan' => 'required',
                 'image' => 'required',
-                'username' => 'required',
+                'status' => 'required',
             ]);
 
             $createForm = $request->all();
@@ -65,4 +66,37 @@ class FormController extends Controller
         }
     }
 
+    public function update(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'kontraktor_id' => 'required',
+                'user_id' => 'required',
+                'nama' => 'required',
+                'telp' => 'required',
+                'alamat' => 'required',
+                'layanan' => 'required',
+                'image' => 'required',
+            ]);
+
+            $form = Form::findOrFail($id);
+            $form->update($request->all());
+
+            return ApiFormatter::createApi(200, 'Success', $form);
+        } catch (Exception $error) {
+            return ApiFormatter::createApi(400, 'Failed', $error);
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $form = Form::findOrFail($id);
+            $form->delete();
+
+            return ApiFormatter::createApi(200, 'Success');
+        } catch (Exception $error) {
+            return ApiFormatter::createApi(400, 'Failed', $error);
+        }
+    }
 }

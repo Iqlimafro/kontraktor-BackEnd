@@ -22,6 +22,11 @@ class Form extends Model
         return $this->belongsTo(Kontraktor::class,'kontraktor_id');
     }
 
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function price()
     {
         return $this->hasOne(Price::class);

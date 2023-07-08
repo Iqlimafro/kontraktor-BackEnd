@@ -20,8 +20,9 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('layanan');
             $table->string('image');
+            $table->string('status');
             $table->foreignId('kontraktor_id')->constrained('kontraktors');
-            $table->string('username');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
