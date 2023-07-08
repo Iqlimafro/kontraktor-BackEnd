@@ -20,7 +20,7 @@ class FormController extends Controller
 
     public function index()
     {
-        $data = Form::with('kontraktor')->get();
+        $data = Form::with(['kontraktor','users'])->get();
         if($data){
             return ApiFormatter::createApi(200, 'Success', $data);
         }else{
