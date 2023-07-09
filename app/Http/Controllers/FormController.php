@@ -28,6 +28,17 @@ class FormController extends Controller
         }
     }
 
+    public function getOrder()
+    {
+        $user = Auth::user();
+        $forms = $user->form;
+        if($forms){
+            return ApiFormatter::createApi(200, 'Success', $forms);
+        }else{
+            return ApiFormatter::createApi(400, 'failed');
+        }
+    }
+
     public function getDataByUsername($username)
     {
         $data = Form::with('kontraktor')->where('username', $username)->get();
