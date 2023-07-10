@@ -35,6 +35,7 @@ Route::post('add-price', [PriceController::class, 'store']);
 Route::post('add-form', [FormController::class, 'store']);
 Route::get('get-form', [FormController::class, 'index']);
 Route::get('get-order', [FormController::class, 'getOrder']);
+Route::get('get-order/show/{user_id}', [FormController::class, 'getOrdersByUserId']);
 Route::get('form/username/{username}', [FormController::class, 'getDataByUsername']);
 Route::get('get-review', [ReviewsController::class,'index']);
 Route::post('add-review', [ReviewsController::class,'store']);

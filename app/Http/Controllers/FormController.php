@@ -99,6 +99,19 @@ class FormController extends Controller
         }
     }
 
+    public function getOrdersByUserId($user_id)
+    {
+        $orders = Form::where('user_id', $user_id)->get();
+
+        if ($orders) {
+            return ApiFormatter::createApi(200, 'Success', $orders);
+        } else {
+            return ApiFormatter::createApi(400, 'Failed');
+        }
+    }
+
+
+
     public function destroy($id)
     {
         try {
