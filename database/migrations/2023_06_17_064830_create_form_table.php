@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('layanan');
             $table->string('image');
             $table->string('status');
+            $table->string('harga');
+            $table->string('upload_bukti');
             $table->foreignId('kontraktor_id')->constrained('kontraktors');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();

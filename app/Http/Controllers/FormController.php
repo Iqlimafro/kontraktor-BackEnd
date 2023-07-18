@@ -60,6 +60,8 @@ class FormController extends Controller
                 'layanan' => 'required',
                 'image' => 'required',
                 'status' => 'required',
+                'harga' => 'required',
+                'upload_bukti' => 'required',
             ]);
 
             $createForm = $request->all();
@@ -81,13 +83,9 @@ class FormController extends Controller
     {
         try {
             $request->validate([
-                'kontraktor_id' => 'required',
-                'user_id' => 'required',
-                'nama' => 'required',
-                'telp' => 'required',
-                'alamat' => 'required',
-                'layanan' => 'required',
-                'image' => 'required',
+                'status' => 'required',
+                'harga' => 'required',
+                'upload_bukti' => 'required',
             ]);
 
             $form = Form::findOrFail($id);
