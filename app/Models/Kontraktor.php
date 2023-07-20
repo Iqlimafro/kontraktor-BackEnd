@@ -20,6 +20,11 @@ class Kontraktor extends Model
         return $this->belongsTo(Kontraktor::class,'kontraktor_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function form()
     {
         return $this->hasMany(Form::class);

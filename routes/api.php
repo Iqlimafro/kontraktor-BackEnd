@@ -51,5 +51,6 @@ Route::get('get-tracking', [TrackingController::class,'index']);
 Route::group(['middleware' => ['auth:sanctum', 'mitra']], function() {
     Route::post('/add-kontraktor', [KontraktorController::class,'store']);
     Route::get('/get-kontraktor', [KontraktorController::class,'getData']);
+    Route::get('/fetch-kontraktor', [KontraktorController::class,'getKontraktor']);
 
 });

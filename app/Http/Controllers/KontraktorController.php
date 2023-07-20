@@ -45,6 +45,16 @@ class KontraktorController extends Controller
         // return $data;
     }
 
+    public function getKontraktor()
+    {
+        $data = Kontraktor::with('user')->where('user_id', Auth::user()->id)->first();
+        if($data){
+            return ApiFormatter::createApi(200, 'Success', $data);
+        }else{
+            return ApiFormatter::createApi(400, 'failed');
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -85,9 +95,14 @@ class KontraktorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user_id)
     {
-        //
+        $laundry = Laundries::where('user_id', $user_id)->get();
+        if($laundry){
+            return ApiFormatter::createApi(200, 'Success', $laundry);
+        }else{
+            return ApiFormatter::createApi(400, 'failed');
+        }
     }
 
     /**
