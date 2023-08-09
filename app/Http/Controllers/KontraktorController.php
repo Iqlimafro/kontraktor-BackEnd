@@ -69,7 +69,8 @@ class KontraktorController extends Controller
                 'alamat' => 'required',
                 'logo' => 'required',
                 'gambar' => 'required',
-                'deskripsi' => 'required'
+                'deskripsi' => 'required',
+                'telp' => 'required'
             ]);
 
             $createKontraktor = $request->all();

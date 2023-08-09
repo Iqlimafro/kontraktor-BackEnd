@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('harga');
             $table->string('upload_bukti');
+            $table->string('kontrak');
             $table->foreignId('kontraktor_id')->constrained('kontraktors');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();

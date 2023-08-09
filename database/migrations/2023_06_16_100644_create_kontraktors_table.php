@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('logo');
             $table->string('gambar');
             $table->string('deskripsi');
+            $table->string('telp');
             $table->foreignId('user_id')->unique()->constrained('users');
             $table->timestamps();
         });
